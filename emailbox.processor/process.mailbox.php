@@ -17,16 +17,21 @@ $log->pushHandler(new StreamHandler('php://stderr', Logger::INFO));
 $type = "nossl";
 $mailbox = sprintf("{%s}",$config["server-url"].$config["ports"][$type]);
 
-//$dataset = ByJG\AnyDataset\Db\Factory::getDbRelationalInstance('sqlite:db/recievedemails.db');
+$mapper = new \ByJG\MicroOrm\Mapper(
+		Models\RecievedEmail::class,   // The full qualified name of the class
+		'recieved_emails',        // The table that represents this entity
+		'id'            // The primary key field
+);
 
-
+$dataset = ByJG\AnyDataset\Db\Factory::getDbRelationalInstance('sqlite:db/recievedemails.db');
+$repository = new \ByJG\MicroOrm\Repository($dataset, $mapper);
 
 $log->info("Open Mailbox for reading");
 
 $messageIds = array();
 try {
 	$reader = new EmailboxProcessor\EmailReaderParser\Email_Reader($mailbox, $config["login-details"]["username"], $config["login-details"]["password"]);	
-	$messages = $reader->get_messages(1);	
+	$messages = $reader->get_messages(5);	
 	 
 	foreach($messages as $amessage){
 		$emailGuid = EmailboxProcessor\Guid::get_uuid();
@@ -42,14 +47,14 @@ try {
 		$recievedEmail = new Models\RecievedEmail();
 		
 		$recievedEmail->setGuid($emailGuid)
-		->setFrom($amessage->from)
-		->setTo($amessage->to)
-		->setCc($amessage->cc)
+		->setEmailFrom($amessage->from)
+		->setEmailTo($amessage->to)
+		->setEmailCc($amessage->cc)
 		->setReplyTo($amessage->reply_to)
-		->setSubject($amessage->subject)
-		->setDate($amessage->date)
-		->setFromEmail($amessage->from_email)
-		->setBody($filename);
+		->setEmailSubject($amessage->subject)
+		->setEmailDate($amessage->date)
+		->setFromEmailaddress($amessage->from_email)
+		->setEmailBody($filename);
 
 		if(!empty($amessage->attachments)){
 			$attachments = array();
@@ -67,10 +72,10 @@ try {
 			$recievedEmail->setAttachments(json_encode($attachments));
 		}
 
-		
-		//print_r($recievedEmail);
+		$repository->save($recievedEmail);
 	} 
 	
+	/*
 	if(is_array($messages)){
 		$messageIds = array_keys($messages);
 		$folder = "inbox.emailprocessed";
@@ -78,7 +83,7 @@ try {
 			$log->info("Mail Moved.", array("subject"=>$messages[$messageIds[$i]]->subject));
 			$reader->move($messageIds[$i], $folder,TRUE);
 		}
-	}
+	}*/
 	
 } catch (Exception $e) {	
 	print_r($e);	

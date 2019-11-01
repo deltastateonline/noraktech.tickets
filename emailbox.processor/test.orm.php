@@ -34,23 +34,18 @@ $dataset = ByJG\AnyDataset\Db\Factory::getDbRelationalInstance('sqlite:db/reciev
 $repository = new \ByJG\MicroOrm\Repository($dataset, $mapper);
 
 $newEmail = new Models\RecievedEmail();
-/* $newEmail->setAttachments("Test attachments")
-	->setBody("Some Body")
-	->setCc("to@deltastateonline.com.au")
-	->setDate(time())
-	->setFrom("Sample <from.email@deltastateonline.com.au>")
-	->setFromEmail("from.email@deltastateonline.com.au")
-	->setGuid("0000-0000-0000-0000-0000")
-	->setReplyTo("no value")
-	->setSubject("First Email")
-	->setTo("to@deltastateonline.com.au"); */
-
-
-$newEmail->setBody("Some Body")
-		->setGuid("0000-0000-0000-0000-0000");
-
-
-
+ $newEmail->setAttachments("Test attachments")
+	->setEmailSubject("Some Body")
+	->setEmailCc("to@deltastateonline.com.au")
+	->setEmailDate(date("Y-m-d H:i:s"))
+	->setEmailFrom("Sample <from.email@deltastateonline.com.au>")
+	->setFromEmailaddress("from.email@deltastateonline.com.au")
+	->setEmailSubject("First Email")
+	->setEmailTo("to@deltastateonline.com.au")	
+	->setGuid("0000-0000-0000-0000-0000-".time())
+	->setEmailBody("Add some body here")
+	->setReplyTo("no value");
+ 
 $repository->save($newEmail);
 
 

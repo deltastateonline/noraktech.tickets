@@ -4,26 +4,23 @@ namespace Models;
 class RecievedEmail{
 	
 	private $guid 	  = null;
-	private $email_from     = null;
-	private $email_to       = null;
-	private $email_cc       = null;
-	private $reply_to = null;
-	private $email_subject  = null;
-	private $email_date     = null;
+	private $emailfrom     = null;
+	private $emailto       = null;
+	private $emailcc       = null;
+	private $replyto = null;
+	private $emailsubject  = null;	
+	private $fromemailaddress = null;
+		
+	private $emailbody = null;	
+	private $attachments = null;	
+	private $responsesent = null;
 	
 	private $created = null;
-	
-	private $from_emailaddress = null;
-	
-	private $email_body = null;
-	
-	private $attachments = null;
-	
-	private $response_sent = null;
+	private $emaildate     = null;
 	
 	
 	public function __construct(){
-		$this->response_sent = false;
+		$this->responsesent = false;
 		$this->created = date("Y-m-d H:i:s");
 	}
 	
@@ -32,41 +29,41 @@ class RecievedEmail{
 		return $this;		
 	}
 	
-	public function setFrom($value){
-		$this->email_from  = $value;
+	public function setEmailFrom($value){
+		$this->emailfrom  = $value;
 		return $this;
 	}
 	
-	public function setTo($value){
-		$this->email_to  = $value;
+	public function setEmailTo($value){
+		$this->emailto  = $value;
 		return $this;
 	}
 	
-	public function setCc($value){
-		$this->email_cc  = $value;
+	public function setEmailCc($value){
+		$this->emailcc  = $value;
 		return $this;
 	}
 	
 	public function setReplyTo($value){
-		$this->reply_to  = $value;
+		$this->replyto  = $value;
 		return $this;
 	}
 	
-	public function setSubject($value){
-		$this->email_subject  = $value;
+	public function setEmailSubject($value){
+		$this->emailsubject  = $value;
 		return $this;
 	}
-	public function setDate($value){
-		$this->email_date  = $value;
+	public function setEmailDate($value){
+		$this->emaildate  = $value;
 		return $this;
 	}
-	public function setFromEmail($value){
-		$this->from_email  = $value;
+	public function setFromEmailaddress($value){
+		$this->fromemailaddress  = $value;
 		return $this;
 	}
 	
-	public function setBody($value){
-		$this->email_body  = $value;
+	public function setEmailBody($value){
+		$this->emailbody  = $value;
 		return $this;
 	}
 	
@@ -80,7 +77,41 @@ class RecievedEmail{
 		return $this->guid;
 	}
 	
-	public function getBody(){
-		return $this->email_body;
+	public function getEmailFrom(){
+		return $this->emailfrom ;
+	}
+	
+	public function getEmailTo(){
+		return $this->emailto ;
+	}
+	
+	public function getEmailCc(){
+		return $this->emailcc ;
+	}
+	
+	public function getReplyTo(){
+		return $this->replyto ;
+	}
+	
+	public function getEmailSubject(){
+		return $this->emailsubject ;
+	}
+	public function getEmailDate(){
+		return $this->emaildate ;
+	}
+	public function getFromEmailaddress(){
+		return $this->fromemailaddress ;
+	}
+	
+	public function getEmailBody(){
+		return $this->emailbody ;
+	}
+	
+	public function getAttachments(){
+		return $this->attachments ;
+	}
+	
+	public function getCreated(){
+		return $this->created;
 	}
 }
