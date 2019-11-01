@@ -1,4 +1,4 @@
-##How to run this features
+## How to run this features
 
 Make sure that you have sqlite installed.
 
