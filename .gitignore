@@ -2,5 +2,6 @@
 /emails
 .env
 config.php
+*.db
 
 
