@@ -1,7 +1,6 @@
 /vendor
 /emails
 .env
-.db
 config.php
 
 
