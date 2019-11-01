@@ -1,9 +1,10 @@
 <?php
-require_once __DIR__.'/vendor/autoload.php';
+define("DS", DIRECTORY_SEPARATOR);
+define("LOCALPATH", __DIR__.DS."..".DS );
+define("EMAIL_PATH",LOCALPATH."emails".DS);
 
-define("EMAIL_PATH",__DIR__.DIRECTORY_SEPARATOR."emails".DIRECTORY_SEPARATOR);
-
-require_once("config.php");
+require_once LOCALPATH."vendor".DS."autoload.php";
+require_once(LOCALPATH."configs".DS."config.php");
 
 $type = "nossl";
 
@@ -11,21 +12,21 @@ $mailbox = sprintf("{%s}",$config["server-url"].$config["ports"][$type]);
 
 logging("Open Mailbox for reading");
 try {
-	$reader = new Ticketing\EmailReaderParser\Email_Reader($mailbox, $config["login-details"]["username"], $config["login-details"]["password"]);	
+	$reader = new EmailboxProcessor\EmailReaderParser\Email_Reader($mailbox, $config["login-details"]["username"], $config["login-details"]["password"]);	
 	$messages = $reader->get_messages(5);	
 	 
 	foreach($messages as $amessage){
-		$emailGuid = Ticketing\Guid::get_uuid();
+		$emailGuid = EmailboxProcessor\Guid::get_uuid();
 		$folder = sprintf("%s%s",EMAIL_PATH,$emailGuid); // ends in a slash
 		
 		logging("Folder Created :".$folder);
 		if (!mkdir($folder, 0777, true)) {
 			throw new Exception(sprintf("Unable to create folder %s ", $folder));
 		}
-		$filename = sprintf("%s%semailcontent.html",$folder,DIRECTORY_SEPARATOR);
+		$filename = sprintf("%s%semailcontent.html",$folder,DS);
 		file_put_contents($filename, $amessage->html);	
 		
-		$recievedEmail = new Ticketing\Models\RecievedEmail();
+		$recievedEmail = new Models\RecievedEmail();
 		
 		$recievedEmail->setGuid($emailGuid)
 		->setFrom($amessage->from)
@@ -41,7 +42,7 @@ try {
 			$attachments = array();
 			foreach($amessage->attachments as $anAttachment){
 				$newAttachmentDetails = array();
-				$newAttachmentDetails["filepath"]= sprintf("%s%s%s",$folder,DIRECTORY_SEPARATOR, $anAttachment["name"]);
+				$newAttachmentDetails["filepath"]= sprintf("%s%s%s",$folder,DS, $anAttachment["name"]);
 				$filemoved = rename($anAttachment["path"], $newAttachmentDetails["filepath"]);
 				logging($anAttachment["path"]." Moved to ".$newAttachmentDetails["filepath"]);
 				

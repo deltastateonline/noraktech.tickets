@@ -1,5 +1,5 @@
 <?php
-namespace Ticketing\EmailReaderParser;
+namespace EmailboxProcessor\EmailReaderParser;
 class Email_Reader
 {
     // imap server stream
@@ -96,7 +96,7 @@ class Email_Reader
             if ( $raw ) {
                 return $raw_message;
             } else {
-                if ( class_exists('Ticketing\EmailReaderParser\Email_Parser') ) {
+                if ( class_exists('EmailboxProcessor\EmailReaderParser\Email_Parser') ) {
                     return new Email_Parser($raw_message);
                 }
             }

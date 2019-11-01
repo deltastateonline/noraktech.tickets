@@ -1,5 +1,5 @@
 <?php
-namespace Ticketing\EmailReaderParser;
+namespace EmailboxProcessor\EmailReaderParser;
 class Email_Parser
 {
     private $allowed_mime_types    = [];

@@ -1,5 +1,5 @@
 <?php
-namespace Ticketing;
+namespace EmailboxProcessor;
 Class Guid{
 	
 	

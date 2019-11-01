@@ -1,5 +1,5 @@
 <?php
-namespace Ticketing\Models;
+namespace Models;
 
 class RecievedEmail{
 	
