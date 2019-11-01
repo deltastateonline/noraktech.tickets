@@ -1,0 +1,13 @@
+{
+    "require": {
+        "php-mime-mail-parser/php-mime-mail-parser": "^5.0",
+        "byjg/micro-orm": "4.0.*"
+    },
+    
+    "autoload": {
+	    "psr-4": {
+	        "EmailboxProcessor\\": "emailbox.processor/libs",
+			"Models\\": "models/"
+	    }
+	}
+}

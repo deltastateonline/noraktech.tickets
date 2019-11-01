@@ -1,0 +1,15 @@
+{
+    "name": "optimumweb/php-email-reader-parser",
+    "version": "1.0.0",
+    "description": "PHP Email Reader (using IMAP) and Parser (using mimeDecode)",
+    "require": {
+        "php": ">=5.4.0",
+        "ext-imap": "*",
+        "ext-mbstring": "*",
+        "php-mime-mail-parser/php-mime-mail-parser": "2.9.1"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "files": [ "email_parser.php", "email_reader.php" ]
+    }
+}

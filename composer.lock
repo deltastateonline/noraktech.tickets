@@ -1,0 +1,501 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "cca7d038b34ffa41b7a60740c7f16631",
+    "packages": [
+        {
+            "name": "byjg/anydataset",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/byjg/anydataset.git",
+                "reference": "e3a891fdc6e2438f2cffc03b7ebc904f87fba3dc"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/byjg/anydataset/zipball/e3a891fdc6e2438f2cffc03b7ebc904f87fba3dc",
+                "reference": "e3a891fdc6e2438f2cffc03b7ebc904f87fba3dc",
+                "shasum": ""
+            },
+            "require": {
+                "byjg/serializer": "1.0.*",
+                "byjg/xmlutil": "1.0.*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">5.7"
+            },
+            "suggest": {
+                "ext-dom": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ByJG\\AnyDataset\\Core\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "João Gilberto Magalhães",
+                    "email": "joao@byjg.com.br"
+                }
+            ],
+            "description": "Anydataset is an agnostic data source abstraction layer in PHP. Core Module.",
+            "time": "2018-11-24T15:06:56+00:00"
+        },
+        {
+            "name": "byjg/anydataset-array",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/byjg/anydataset-array.git",
+                "reference": "e66aa343b8ccd32baec0545120ea9948e1d0b0c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/byjg/anydataset-array/zipball/e66aa343b8ccd32baec0545120ea9948e1d0b0c5",
+                "reference": "e66aa343b8ccd32baec0545120ea9948e1d0b0c5",
+                "shasum": ""
+            },
+            "require": {
+                "byjg/anydataset": "4.0.*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ByJG\\AnyDataset\\Lists\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "João Gilberto Magalhães",
+                    "email": "joao@byjg.com.br"
+                }
+            ],
+            "description": "Anydataset Array abstraction. Anydataset is an agnostic data source abstraction layer in PHP.",
+            "time": "2018-11-24T15:20:06+00:00"
+        },
+        {
+            "name": "byjg/anydataset-db",
+            "version": "4.0.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/byjg/anydataset-db.git",
+                "reference": "bbe133f059a3ff0e554646b113f631bf9f029b1c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/byjg/anydataset-db/zipball/bbe133f059a3ff0e554646b113f631bf9f029b1c",
+                "reference": "bbe133f059a3ff0e554646b113f631bf9f029b1c",
+                "shasum": ""
+            },
+            "require": {
+                "byjg/anydataset": "4.0.*",
+                "byjg/anydataset-array": "4.0.*",
+                "byjg/uri": "1.0.*",
+                "ext-pdo": "*",
+                "php": ">=5.6.0",
+                "psr/cache": "1.0.*"
+            },
+            "require-dev": {
+                "byjg/cache-engine": "4.0.*",
+                "phpunit/phpunit": ">5.7"
+            },
+            "suggest": {
+                "byjg/cache-engine": "4.0.*",
+                "ext-curl": "*",
+                "ext-oci8": "*",
+                "ext-pdo_mysql": "*",
+                "ext-pdo_pgsql": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ByJG\\AnyDataset\\Db\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "João Gilberto Magalhães",
+                    "email": "joao@byjg.com.br"
+                }
+            ],
+            "description": "Anydataset Database Relational abstraction. Anydataset is an agnostic data source abstraction layer in PHP.",
+            "time": "2018-11-24T16:06:30+00:00"
+        },
+        {
+            "name": "byjg/micro-orm",
+            "version": "4.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/byjg/micro-orm.git",
+                "reference": "432317c9550de62d32a4839402d9c553678e3cc4"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/byjg/micro-orm/zipball/432317c9550de62d32a4839402d9c553678e3cc4",
+                "reference": "432317c9550de62d32a4839402d9c553678e3cc4",
+                "shasum": ""
+            },
+            "require": {
+                "byjg/anydataset-db": "4.0.*",
+                "byjg/serializer": "1.0.*",
+                "ext-json": "*",
+                "php": ">=5.6.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "5.7.*|7.4.*"
+            },
+            "suggest": {
+                "ext-curl": "*",
+                "ext-pdo_mysql": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ByJG\\MicroOrm\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "João Gilberto Magalhães",
+                    "email": "joao@byjg.com.br"
+                }
+            ],
+            "description": "A micro framework for create a very simple decoupled ORM (sqlite, mysql, postgres, sqlserver)",
+            "time": "2019-10-28T04:55:38+00:00"
+        },
+        {
+            "name": "byjg/serializer",
+            "version": "1.0.7",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/byjg/serializer.git",
+                "reference": "229882fbe5efe0edf195937a39aa2d48912a3f8d"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/byjg/serializer/zipball/229882fbe5efe0edf195937a39aa2d48912a3f8d",
+                "reference": "229882fbe5efe0edf195937a39aa2d48912a3f8d",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "php": ">=5.5"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">5.7"
+            },
+            "suggest": {
+                "ext-curl": "*"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ByJG\\Serializer\\": "src/",
+                    "Tests\\": "tests"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "João Gilberto Magalhães",
+                    "email": "joao@byjg.com.br"
+                }
+            ],
+            "description": "Serialize any object into array and format it JSON or XML",
+            "time": "2018-03-09T05:59:31+00:00"
+        },
+        {
+            "name": "byjg/uri",
+            "version": "1.0.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/byjg/uri.git",
+                "reference": "d252f70ca1f866e3c1c33d56c284c1d9da481959"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/byjg/uri/zipball/d252f70ca1f866e3c1c33d56c284c1d9da481959",
+                "reference": "d252f70ca1f866e3c1c33d56c284c1d9da481959",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0",
+                "psr/http-message": "~1.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ByJG\\Util\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "João Gilberto Magalhães",
+                    "email": "joao@byjg.com.br"
+                }
+            ],
+            "description": "An implementation of PSR UriInterface ",
+            "time": "2018-03-09T01:56:58+00:00"
+        },
+        {
+            "name": "byjg/xmlutil",
+            "version": "1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/byjg/xmlutil.git",
+                "reference": "9f82339931252b7990596d07f365c765e3dbbad3"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/byjg/xmlutil/zipball/9f82339931252b7990596d07f365c765e3dbbad3",
+                "reference": "9f82339931252b7990596d07f365c765e3dbbad3",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.4.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": ">5.7"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "ByJG\\Util\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "João Gilberto Magalhães",
+                    "email": "joao@byjg.com.br"
+                }
+            ],
+            "description": "A utility class to make easy work with XML in PHP.",
+            "time": "2018-03-10T14:43:36+00:00"
+        },
+        {
+            "name": "php-mime-mail-parser/php-mime-mail-parser",
+            "version": "5.0.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-mime-mail-parser/php-mime-mail-parser.git",
+                "reference": "27983433aabeccee832573c3c56e6a4855e57745"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-mime-mail-parser/php-mime-mail-parser/zipball/27983433aabeccee832573c3c56e6a4855e57745",
+                "reference": "27983433aabeccee832573c3c56e6a4855e57745",
+                "shasum": ""
+            },
+            "require": {
+                "ext-mailparse": "*",
+                "php": "^7.1"
+            },
+            "replace": {
+                "exorus/php-mime-mail-parser": "*",
+                "messaged/php-mime-mail-parser": "*"
+            },
+            "require-dev": {
+                "php-coveralls/php-coveralls": "^2.1",
+                "phpunit/php-token-stream": "^3.0",
+                "phpunit/phpunit": "^7.0",
+                "squizlabs/php_codesniffer": "^3.4"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PhpMimeMailParser\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "eXorus",
+                    "email": "exorus.spam@gmail.com",
+                    "homepage": "https://github.com/eXorus/",
+                    "role": "Developer"
+                },
+                {
+                    "name": "M.Valinskis",
+                    "email": "M.Valins@gmail.com",
+                    "homepage": "https://code.google.com/p/php-mime-mail-parser",
+                    "role": "Developer"
+                },
+                {
+                    "name": "eugene.emmett.wood",
+                    "email": "gene_w@cementhorizon.com",
+                    "homepage": "https://code.google.com/p/php-mime-mail-parser",
+                    "role": "Developer"
+                },
+                {
+                    "name": "alknetso",
+                    "email": "alkne@gmail.com",
+                    "homepage": "https://code.google.com/p/php-mime-mail-parser",
+                    "role": "Developer"
+                },
+                {
+                    "name": "bucabay",
+                    "email": "gabe@fijiwebdesign.com",
+                    "homepage": "http://www.fijiwebdesign.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A fully tested email parser for PHP 7.1+ (mailparse extension wrapper).",
+            "homepage": "https://github.com/php-mime-mail-parser/php-mime-mail-parser",
+            "keywords": [
+                "MimeMailParser",
+                "mail",
+                "mailparse",
+                "mime",
+                "parser",
+                "php"
+            ],
+            "time": "2019-09-23T11:57:58+00:00"
+        },
+        {
+            "name": "psr/cache",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/cache.git",
+                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/cache/zipball/d11b50ad223250cf17b86e38383413f5a6764bf8",
+                "reference": "d11b50ad223250cf17b86e38383413f5a6764bf8",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Cache\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for caching libraries",
+            "keywords": [
+                "cache",
+                "psr",
+                "psr-6"
+            ],
+            "time": "2016-08-06T20:24:11+00:00"
+        },
+        {
+            "name": "psr/http-message",
+            "version": "1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/php-fig/http-message.git",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "reference": "f6561bf28d520154e4b0ec72be95418abe6d9363",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Psr\\Http\\Message\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "PHP-FIG",
+                    "homepage": "http://www.php-fig.org/"
+                }
+            ],
+            "description": "Common interface for HTTP messages",
+            "homepage": "https://github.com/php-fig/http-message",
+            "keywords": [
+                "http",
+                "http-message",
+                "psr",
+                "psr-7",
+                "request",
+                "response"
+            ],
+            "time": "2016-08-06T14:39:51+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
