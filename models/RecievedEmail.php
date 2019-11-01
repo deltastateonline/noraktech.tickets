@@ -4,18 +4,18 @@ namespace Models;
 class RecievedEmail{
 	
 	private $guid 	  = null;
-	private $from     = null;
-	private $to       = null;
-	private $cc       = null;
+	private $email_from     = null;
+	private $email_to       = null;
+	private $email_cc       = null;
 	private $reply_to = null;
-	private $subject  = null;
-	private $date     = null;
+	private $email_subject  = null;
+	private $email_date     = null;
 	
 	private $created = null;
 	
-	private $from_email = null;
+	private $from_emailaddress = null;
 	
-	private $body = null;
+	private $email_body = null;
 	
 	private $attachments = null;
 	
@@ -33,17 +33,17 @@ class RecievedEmail{
 	}
 	
 	public function setFrom($value){
-		$this->from  = $value;
+		$this->email_from  = $value;
 		return $this;
 	}
 	
 	public function setTo($value){
-		$this->to  = $value;
+		$this->email_to  = $value;
 		return $this;
 	}
 	
 	public function setCc($value){
-		$this->cc  = $value;
+		$this->email_cc  = $value;
 		return $this;
 	}
 	
@@ -53,11 +53,11 @@ class RecievedEmail{
 	}
 	
 	public function setSubject($value){
-		$this->subject  = $value;
+		$this->email_subject  = $value;
 		return $this;
 	}
 	public function setDate($value){
-		$this->date  = $value;
+		$this->email_date  = $value;
 		return $this;
 	}
 	public function setFromEmail($value){
@@ -66,12 +66,21 @@ class RecievedEmail{
 	}
 	
 	public function setBody($value){
-		$this->body  = $value;
+		$this->email_body  = $value;
 		return $this;
 	}
 	
 	public function setAttachments($value){
 		$this->attachments  = $value;
 		return $this;
+	}
+	
+	
+	public function getGuid(){
+		return $this->guid;
+	}
+	
+	public function getBody(){
+		return $this->email_body;
 	}
 }

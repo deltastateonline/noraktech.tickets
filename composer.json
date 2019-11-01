@@ -1,7 +1,9 @@
 {
     "require": {
         "php-mime-mail-parser/php-mime-mail-parser": "^5.0",
-        "byjg/micro-orm": "4.0.*"
+        "monolog/monolog": "^1.25",
+        "byjg/micro-orm" : "4.0.1"
+
     },
     
     "autoload": {
