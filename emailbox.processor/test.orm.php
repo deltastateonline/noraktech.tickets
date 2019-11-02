@@ -16,6 +16,7 @@ use Monolog\Handler\SyslogHandler;
 $log = new Logger('test.orm');
 //$log->pushHandler(new StreamHandler('F:\logs\your.log', Logger::WARNING));
 $log->pushHandler(new StreamHandler('php://stderr', Logger::WARNING));
+$log->pushHandler(new StreamHandler('php://stderr', Logger::INFO));
 
 // add records to the log
 $log->warning('Foo', array("Here","again"));
@@ -30,7 +31,9 @@ $mapper = new \ByJG\MicroOrm\Mapper(
 		'id'            // The primary key field
 );
 
-$dataset = ByJG\AnyDataset\Db\Factory::getDbRelationalInstance('sqlite:db/recievedemails.db');
+$databaseConnectionString = $config["database-connection"]["mysql"];
+
+$dataset = ByJG\AnyDataset\Db\Factory::getDbRelationalInstance($databaseConnectionString);
 $repository = new \ByJG\MicroOrm\Repository($dataset, $mapper);
 
 $newEmail = new Models\RecievedEmail();
@@ -48,5 +51,5 @@ $newEmail = new Models\RecievedEmail();
  
 $repository->save($newEmail);
 
-
+$log->info('Email Saved', array("data"=>$newEmail));
 		

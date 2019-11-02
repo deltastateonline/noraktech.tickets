@@ -23,7 +23,8 @@ $mapper = new \ByJG\MicroOrm\Mapper(
 		'id'            // The primary key field
 );
 
-$dataset = ByJG\AnyDataset\Db\Factory::getDbRelationalInstance('sqlite:db/recievedemails.db');
+$databaseConnectionString = $config["database-connection"]["mysql"];
+$dataset = ByJG\AnyDataset\Db\Factory::getDbRelationalInstance($databaseConnectionString);
 $repository = new \ByJG\MicroOrm\Repository($dataset, $mapper);
 
 $log->info("Open Mailbox for reading");
