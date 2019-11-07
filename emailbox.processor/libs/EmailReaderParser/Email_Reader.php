@@ -31,7 +31,7 @@ class Email_Reader
         }
 
         if ( !$this->connect() ) {
-            throw new Exception(sprintf("Could not connect to mailbox '%s' with username '%s'", $this->mailbox, $this->username));
+            throw new \Exception(sprintf("Could not connect to mailbox '%s' with username '%s'", $this->mailbox, $this->username));
         }
     }
 
@@ -50,10 +50,10 @@ class Email_Reader
             if ( $this->stream = imap_open($this->mailbox, $this->username, $this->password) ) {
                 return true;
             } else {
-                throw new Exception(sprintf("Invalid IMAP stream (mailbox: %s, username: %s)", $this->mailbox, $this->username));
+                throw new \Exception(sprintf("Invalid IMAP stream (mailbox: %s, username: %s)", $this->mailbox, $this->username));
             }
         } else {
-            throw new Exception(sprintf("Missing IMAP settings: mailbox, username, and/or password"));
+            throw new \Exception(sprintf("Missing IMAP settings: mailbox, username, and/or password"));
         }
     }
 
