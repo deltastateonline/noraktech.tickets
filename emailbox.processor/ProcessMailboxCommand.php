@@ -42,7 +42,9 @@ class ProcessMailboxCommand extends SymfonyCommand
 		$this->setName('mailbox')
 		->setDescription('Process Imap Box.')
 		->setHelp('This command allows Scraps an Imap Mail Box')
-		->addArgument('port-type', InputArgument::REQUIRED, 'The Port Type is required.');
+		->addArgument('port-type', InputArgument::REQUIRED, 'The Port Type is required.')
+		->addArgument('move-emails', InputArgument::OPTIONAL, 'Move Emails after downloading them.');
+		
 		
 		$this->log = new Logger('Process.Mailbox');
 		//$this->log->pushHandler(new StreamHandler('\logs\Process.Mailbox.log', Logger::INFO));
@@ -57,8 +59,10 @@ class ProcessMailboxCommand extends SymfonyCommand
 		$type = $input->getArgument('port-type');
 		$this->mailbox = sprintf("{%s}",$this->config["server-url"].$this->config["ports"][$type]);
 		
+		$moveEmails = (bool)$input->getArgument('move-emails');
 		
-		$this->log->info($type);		
+		$this->log->info("Port Type : ".$type);		
+		$this->log->info("Move Emails? : ".$moveEmails);
 		$this->log->info("Open Mailbox for reading");
 		$this->log->info("Connection String : ".$this->mailbox);
 	
@@ -126,6 +130,16 @@ class ProcessMailboxCommand extends SymfonyCommand
 				}
 				
 			}
+			
+			
+			 if(!empty($messages) && !empty($moveEmails)){
+			 	$messageIds = array_keys($messages);
+			 	$folder = "inbox.emailprocessed";
+			 	for($i=0; $i < count($messageIds); $i++){
+					$this->log->info("Mail Moved.", array("subject"=>$messages[$messageIds[$i]]->subject));
+			 		$reader->move($messageIds[$i], $folder,TRUE);
+			 	}
+			 }
 			
 			
 			
