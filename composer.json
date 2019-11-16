@@ -3,7 +3,9 @@
     	"symfony/console": "~4.1",
         "php-mime-mail-parser/php-mime-mail-parser": "^5.0",
         "monolog/monolog": "^1.25",
-        "byjg/micro-orm" : "4.0.1"
+        "byjg/micro-orm" : "4.0.1",
+        "swiftmailer/swiftmailer": "^6.0",
+        "twig/twig": "^2.0"
 
     },
     
@@ -11,7 +13,7 @@
 	    "psr-4": {
 	    	"Console\\":"emailbox.processor",
 	        "EmailboxProcessor\\": "libs",
-			"Models\\": "models/"
+			"Models\\": "models"
 	    }
 	}
 }

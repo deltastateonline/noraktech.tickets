@@ -20,6 +20,13 @@ use EmailboxProcessor\EmailReaderParser\Email_Reader ;
 use EmailboxProcessor\Guid;
 use Models\RecievedEmail;
 
+use Swift_SmtpTransport;
+use Swift_Mailer;
+use Swift_Message;
+
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
+
  
 
 class ProcessMailboxCommand extends SymfonyCommand
@@ -35,7 +42,7 @@ class ProcessMailboxCommand extends SymfonyCommand
 		$this->setName('mailbox')
 		->setDescription('Process Imap Box.')
 		->setHelp('This command allows Scraps an Imap Mail Box')
-		->addArgument('serverkey', InputArgument::REQUIRED, 'The server key is required.');
+		->addArgument('port-type', InputArgument::REQUIRED, 'The Port Type is required.');
 		
 		$this->log = new Logger('Process.Mailbox');
 		//$this->log->pushHandler(new StreamHandler('\logs\Process.Mailbox.log', Logger::INFO));
@@ -47,20 +54,26 @@ class ProcessMailboxCommand extends SymfonyCommand
 
 	public function execute(InputInterface $input, OutputInterface $output)
 	{
-		$type = "nossl1";
+		$type = $input->getArgument('port-type');
 		$this->mailbox = sprintf("{%s}",$this->config["server-url"].$this->config["ports"][$type]);
 		
-		$serverKey = $input->getArgument('serverkey');
-		$this->log->info($serverKey);		
+		
+		$this->log->info($type);		
 		$this->log->info("Open Mailbox for reading");
 		$this->log->info("Connection String : ".$this->mailbox);
-		
+	
 		$repository = $this->init(); // initialize a  repository
 		
 		$messageIds = array();
 		try {
+			
+			$loader = new FilesystemLoader('views');
+			$twig = new Environment($loader);		
+			
+			$mailer = $this->init_swift();
+			
 			$reader = new Email_Reader($this->mailbox, $this->config["login-details"]["username"], $this->config["login-details"]["password"]);
-			$messages = $reader->get_messages(5);
+			$messages = $reader->get_messages(2);
 			
 			foreach($messages as $amessage){
 				$emailGuid = Guid::get_uuid();
@@ -106,6 +119,12 @@ class ProcessMailboxCommand extends SymfonyCommand
 				
 				$this->log->info("Ticket #".$recievedEmail->getId());
 				
+				if(!empty($recievedEmail->getId())){				
+					
+					$this->log->info("Sending a Reply to : ".$recievedEmail->getEmailSubject());
+					$this->sendReply($recievedEmail, $mailer ,$twig);
+				}
+				
 			}
 			
 			
@@ -135,5 +154,62 @@ class ProcessMailboxCommand extends SymfonyCommand
 		$repository = new \ByJG\MicroOrm\Repository($dataset, $mapper);
 		
 		return $repository;
+	}
+	
+	private function init_swift(){
+		
+		
+		$transport = (new Swift_SmtpTransport($this->config["smtp"]["hostname"], 25))
+		->setUsername($this->config["smtp"]["username"])
+		->setPassword($this->config["smtp"]["password"]);
+		
+		// Create the Mailer using your created Transport		
+		return new Swift_Mailer($transport);
+	}
+	
+	private function getEmailFromName($emailAddress = NULL){
+		
+		if(!empty($emailAddress)){
+			$keywords = preg_split("/</", $emailAddress);
+			return $keywords[0];
+		}
+		
+		return "";
+	}
+	
+	private function sendReply($recievedEmail , $mailer , $twig){
+		
+		try{
+			$message = new Swift_Message();
+			$originalfromName=  $this->getEmailFromName($recievedEmail->getEmailFrom());
+			// Set a "subject"
+				
+			$subjectString = $twig->render('email-subject.twig', ['emailSubject' => $recievedEmail->getEmailSubject(),
+					'ticketNumber' => '#'.$recievedEmail->getId()]);
+				
+				
+			$bodyString = $twig->render('email-reply.twig', ['emailSubject' => $recievedEmail->getEmailSubject(),
+					'emailForm' => $originalfromName]);
+				
+				
+			$message->setSubject($subjectString);
+				
+			// Set the "From address"
+			$message->setFrom([$this->config["smtp"]["sent-from"] => 'Support']);
+		
+			if(isset($this->config["smtp"]["send-emails-to"])){
+				$message->addTo($this->config["smtp"]["send-emails-to"],$originalfromName);
+			}else{
+				$message->addTo($recievedEmail->getFromEmailaddress(),$originalfromName);
+			}
+				
+			$message->setBody($bodyString);
+			// Set a "Body"
+			$message->addPart($bodyString, 'text/html');
+				
+			$result = $mailer->send($message);
+		} catch (Exception $e) {
+			$this->log->error("Sending Email ".$e->getMessage());
+		}
 	}
 }

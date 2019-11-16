@@ -13,8 +13,6 @@ $application = new Application("Noraktech Ticking System");
 $newCommand = new ProcessMailboxCommand();
 $newCommand->setConfigs($config);
 
-
 $application->add($newCommand);
-
 
 $application->run();
