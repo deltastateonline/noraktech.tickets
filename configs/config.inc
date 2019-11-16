@@ -13,3 +13,12 @@ $config["login-details"] = array(
 
 $config["database-connection"]["sqlite"] = "sqlite:db/recievedemails.db";
 $config["database-connection"]["mysql"] = "mysql://username:password@localhost/database";
+
+
+$config["smtp"] = array(
+		"hostname"=>"smtp server",
+		"username"=>"username",
+		"password"=>"password",
+		"send-emails-to" =>"set this value during testing",
+		"sent-from"=>"all remails will come from this email address"
+);

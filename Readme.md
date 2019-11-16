@@ -21,6 +21,10 @@ Update `config.inc` file to `config.php` with configuration details.
 ### Install composer dependency
 ```bash
 F:\webdocs\noraktech.tickets>composer install
+
+or  
+
+F:\webdocs\noraktech.tickets>composer update
 ```
 
 
@@ -33,7 +37,7 @@ F:\webdocs\noraktech.tickets>php emailbox.processor\test.orm.php
 ### Run this command like this.
 Do not change into the `emailbox.processor` folder
 ```bash
-F:\webdocs\noraktech.tickets>php emailbox.processor\process.mailbox.php
+F:\webdocs\noraktech.tickets>php process.sf4.php mailbox {nossl1|nossl|ssl}
 ```
 ### Help For Micro Orm
 [Readme for Micro Orm](https://opensource.byjg.com/micro-orm)
