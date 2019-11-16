@@ -3,6 +3,7 @@ namespace Models;
 
 class RecievedEmail{
 	
+	private $id= null;
 	private $guid 	  = null;
 	private $emailfrom     = null;
 	private $emailto       = null;
@@ -24,6 +25,10 @@ class RecievedEmail{
 		$this->created = date("Y-m-d H:i:s");
 	}
 	
+	public function setId($value){
+		$this->id = $value;
+		return $this;
+	}
 	public function setGuid($value){
 		$this->guid  = $value;
 		return $this;		
@@ -113,5 +118,9 @@ class RecievedEmail{
 	
 	public function getCreated(){
 		return $this->created;
+	}
+	
+	public function getId(){
+		return $this->id;
 	}
 }
