@@ -163,7 +163,7 @@ class ProcessMailboxCommand extends SymfonyCommand
 				'id'            // The primary key field
 		);
 		
-		
+		$mapper->addFieldMap("entityguid", "entity_guid");
 		
 		$databaseConnectionString = $this->config["database-connection"]["mysql"];
 		$dataset = \ByJG\AnyDataset\Db\Factory::getDbRelationalInstance($databaseConnectionString);

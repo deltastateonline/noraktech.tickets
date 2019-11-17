@@ -33,7 +33,7 @@ $mapper = new \ByJG\MicroOrm\Mapper(
 		true
 );
 //$mapper->addFieldAlias("entity_guid", "entity_guid");
-//$mapper->addFieldAlias("entityguid", "entity_guid");
+$mapper->addFieldMap("entityguid", "entity_guid");
 
 
 $databaseConnectionString = $config["database-connection"]["mysql"];

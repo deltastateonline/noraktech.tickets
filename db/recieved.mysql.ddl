@@ -24,3 +24,6 @@ ALTER TABLE `recieved_emails`
 
 ALTER TABLE `recieved_emails`
 	ADD COLUMN `status` VARCHAR(10) NULL DEFAULT 'NEW' AFTER `emaildate`;
+	
+ALTER TABLE `recieved_emails`
+	CHANGE COLUMN `entityguid` `entity_guid` VARCHAR(50) NULL DEFAULT NULL AFTER `id`;
