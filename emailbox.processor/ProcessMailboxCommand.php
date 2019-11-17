@@ -92,7 +92,7 @@ class ProcessMailboxCommand extends SymfonyCommand
 			
 				$recievedEmail = new RecievedEmail();
 			
-				$recievedEmail->setGuid($emailGuid)
+				$recievedEmail->setEntityGuid($emailGuid)
 				->setEmailFrom($amessage->from)
 				->setEmailTo($amessage->to)
 				->setEmailCc($amessage->cc)
@@ -162,6 +162,8 @@ class ProcessMailboxCommand extends SymfonyCommand
 				'recieved_emails',        // The table that represents this entity
 				'id'            // The primary key field
 		);
+		
+		
 		
 		$databaseConnectionString = $this->config["database-connection"]["mysql"];
 		$dataset = \ByJG\AnyDataset\Db\Factory::getDbRelationalInstance($databaseConnectionString);

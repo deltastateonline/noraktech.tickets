@@ -4,7 +4,7 @@ namespace Models;
 class RecievedEmail{
 	
 	private $id= null;
-	private $guid 	  = null;
+	private $entityguid 	  = null;
 	private $emailfrom     = null;
 	private $emailto       = null;
 	private $emailcc       = null;
@@ -29,8 +29,8 @@ class RecievedEmail{
 		$this->id = $value;
 		return $this;
 	}
-	public function setGuid($value){
-		$this->guid  = $value;
+	public function setEntityGuid($value){
+		$this->entityguid  = $value;
 		return $this;		
 	}
 	
@@ -78,8 +78,8 @@ class RecievedEmail{
 	}
 	
 	
-	public function getGuid(){
-		return $this->guid;
+	public function getEntityGuid(){
+		return $this->entityguid;
 	}
 	
 	public function getEmailFrom(){

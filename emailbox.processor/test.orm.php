@@ -28,8 +28,13 @@ $log->error('Bar');
 $mapper = new \ByJG\MicroOrm\Mapper(
 		Models\RecievedEmail::class,   // The full qualified name of the class
 		'recieved_emails',        // The table that represents this entity
-		'id'            // The primary key field
+		'id',            // The primary key field
+		null,
+		true
 );
+//$mapper->addFieldAlias("entity_guid", "entity_guid");
+//$mapper->addFieldAlias("entityguid", "entity_guid");
+
 
 $databaseConnectionString = $config["database-connection"]["mysql"];
 
@@ -45,7 +50,7 @@ $newEmail = new Models\RecievedEmail();
 	->setFromEmailaddress("from.email@deltastateonline.com.au")
 	->setEmailSubject("First Email")
 	->setEmailTo("to@deltastateonline.com.au")	
-	->setGuid("0000-0000-0000-0000-0000-".time())
+	->setEntityGuid("0000-0000-0000-0000-0000-".time())
 	->setEmailBody("Add some body here")
 	->setReplyTo("no value");
  

@@ -18,3 +18,9 @@ CREATE TABLE `recieved_emails` (
 COLLATE='latin1_swedish_ci'
 ENGINE=InnoDB
 ;
+
+ALTER TABLE `recieved_emails`
+	CHANGE COLUMN `guid` `entityguid` VARCHAR(50) NULL DEFAULT NULL AFTER `id`;
+
+ALTER TABLE `recieved_emails`
+	ADD COLUMN `status` VARCHAR(10) NULL DEFAULT 'NEW' AFTER `emaildate`;
